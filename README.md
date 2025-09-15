@@ -1,8 +1,8 @@
-### Socket.IO Chat
+## Socket.IO Chat
 
 A simple chat demo for Socket.IO
 
-### How to use
+## How to use
 
 ``` 
 $ npm i
