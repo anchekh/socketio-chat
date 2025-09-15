@@ -1,22 +1,58 @@
-
-# Socket.IO Chat
+### Socket.IO Chat
 
 A simple chat demo for Socket.IO
 
-## How to use
+### How to use
 
-```
+``` 
 $ npm i
 $ npm start
 ```
+# События
 
-And point your browser to `http://localhost:3000`. Optionally, specify
-a port by supplying the `PORT` env variable.
+## Событие new message
 
-## Features
+### Событие new message срабатывает при отправке пользователем сообщения
+### Добавляет username пользователя к отправленному им сообщению
+### Сохраняет `message` и `username` пользовыателя в память
 
-- Multiple users can join a chat room by each entering a unique username
-on website load.
-- Users can type chat messages to the chat room.
-- A notification is sent to all users when a user joins or leaves
-the chatroom.
+## Событие login
+
+### Событие login срабатывает при введении username пользователя
+### Сохраняет login в `socket.username`
+### Записывает login в `numUsers`
+
+## Событие typing
+
+### Событие `typing` срабатывает, когда пользователь начинает печатать сообщение
+### Содержит `username` пользователя, который печатает
+### Отображает в памяти уведомление о том, что пользователь пишет сообщение
+
+## Событие stop typing
+
+### Событие `stop typing` срабатывает, когда пользователь перестает печатать сообщение
+### Содержит username пользователя, который перестал печатать
+### Отображает в памяти уведомление о том, что пользователь перестал писать сообщение
+
+## Событие disconnect
+
+### Событие `disconnect` срабатывает при разрыве соединения
+### Проверяет, был ли пользователь авторизован в системе
+### Удаляет пользователя из `numUsers`
+### Запускает событие `user left`
+
+## Событие user left
+
+### Событие `user left` срабатывает при отключении пользователя 
+### Очищает данные о деятельности пользователя и отправляет сообщение об этом
+
+## Событие reconnect 
+
+### Срабатывает при переподключении пользователя к сайту
+### Отправляет сообщение о переподключении
+### Выполняет авторизацию пользователя
+
+## Событие reconnect_error
+
+### Срабатывает при ошибке переподключения пользователя
+### Отправляет сообщение об ошибке переподключения
